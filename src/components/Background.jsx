@@ -1,32 +1,36 @@
-// import { useRef, useEffect } from "react"
-// import NET from 'vanta/dist/vanta.net.min';
-// import * as THREE from 'three';
+import { useEffect, useState } from 'react';
+import NET from 'vanta/dist/vanta.net.min';
+import * as THREE from 'three';
 
-// export const Background = () =>{
+export const Background = () =>{
+    const [vanta, setVanta] = useState(null);
 
-//     const vantaRef = useRef(null);
-
-//     useEffect(() => {
+    useEffect(() => {
+     
+        if(!vanta) return
+ 
+        const vantaEffect= NET({
+            el: vanta,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.0,
+            minWidth: 200.0,
+            scale: 0.5,
+            scaleMobile: 1.0,
+        });
         
-//         if(!vantaRef) return
+        return () => {
+            if (!(vantaEffect instanceof Object)) return;
+            if (!('destroy' in vantaEffect)) return;
+            if (typeof vantaEffect.destroy !== 'function') return;
+            vantaEffect.destroy();;
+        };
     
-//         const vantaEffect= NET({
-//             el: vantaRef.current,
-//             THREE,
-//             mouseControls: true,
-//             touchControls: true,
-//             gyroControls: false,
-//             minHeight: 200.00,
-//             minWidth: 200.00,
-//             scale: 1.00,
-//             scaleMobile: 1.00
-//         });
-//         return () => {
-//             vantaEffect.destroy();
-//         };
-//     }, []);
-    
-//     return (
-//         <div ref={vantaRef} style={{ width: '100%', height: '100vh' }}></div>
-//     )
-// }
+    }, [vanta]);
+ 
+    return (
+        <div ref={setVanta} style={{ width: '100%', height: '100vh' }}></div>
+    )
+}

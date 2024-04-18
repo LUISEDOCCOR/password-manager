@@ -1,8 +1,6 @@
-// import { Background } from "../../components/Background"
 
 export const Home = () => {
     return (
-        <h1>sd</h1>
-        // <Background/>
+        <h1></h1>
     )
 }
