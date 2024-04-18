@@ -1,9 +1,11 @@
 export const Home = () => {
     return (
-        <main className="flex h-screen w-full bg-[#f3f2f0]">
-            <section className="flex flex-col justify-center w-1/2 gap-16 px-12 xl:px-32">
-                <article>
-                    <h1 className="text-6xl leading-tight font-bold">
+        <main className="flex h-screen w-full bg-[#f3f2f0] flex-col justify-center 
+        xl:justify-start xl:flex-row">
+            <section className="flex flex-col justify-center gap-16 px-12 
+            w-full mt-12 items-center xl:items-start xl:mt-0 xl:w-1/2 xl:px-32">
+                <article className="text-center xl:text-left">
+                    <h1 className="text-5xl font-bold xl:text-6xl xl:leading-tight">
                         Acceso más sencillo, <br />
                         contraseñas más seguras
                     </h1>
@@ -27,7 +29,7 @@ export const Home = () => {
                     </a>
                 </article>
             </section>
-            <section className="w-1/2 flex justify-center items-center">
+            <section className="w-1/2 justify-center items-center hidden xl:flex">
                 <article className="h-[700px] w-[600px]">
                     <img className="hover:scale-105 transition-transform" src="./hero.png" alt="hero" />
                 </article>
